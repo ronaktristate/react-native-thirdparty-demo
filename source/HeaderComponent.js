@@ -1,82 +1,8 @@
 import React from "react";
 import { Text, View, StatusBar, StyleSheet, TouchableOpacity, Image, Platform, Keyboard, ImageBackground } from 'react-native';
 import { getStatusBarHeight } from './iPhoneXHelper';
-import { colors, constants, images } from "../common";
 
 // /**custom header componet */
-// const Header = ({
-//    backButton,
-//    onBackButtonPress,
-//    rightIcon,
-//    rightImage,
-//    middleText,
-//    leftIcon,
-//    leftIconPress,
-//    mainStyle,
-//    middleTextStyle,
-//    onPressRightIcon,
-//    rightImageStyle
-// }) => {
-//    return (
-//       <View style={[styles.container, mainStyle,]} >
-//          <>
-//             <View style={styles.firstView}>
-//                {
-//                   backButton ?
-//                      <View
-//                         style={[styles.backButton]}
-//                      >
-//                         <TouchableOpacity
-//                            onPress={() => {
-//                               if (onBackButtonPress) onBackButtonPress();
-//                               else NavigationService.goBack();
-//                            }}
-//                            delayPressIn={0}
-//                         >
-//                            <Text>{"Back"}</Text>
-//                         </TouchableOpacity>
-//                      </View>
-//                      :
-//                      leftIcon ?
-//                         <View
-//                            style={[styles.backButton]}
-//                         >
-//                            <TouchableOpacity
-//                               onPress={() => leftIconPress && leftIconPress()}
-//                               delayPressIn={0}
-//                               hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
-//                            >
-//                               <Image source={leftIcon} />
-//                            </TouchableOpacity>
-//                         </View>
-//                         :
-//                         null
-//                }
-//             </View>
-//             <View
-//                style={[styles.middleView]}>
-//                {middleText ?
-//                   <Text numberOfLines={1} style={[styles.middleTextStyle, middleTextStyle, {}]}> {middleText}</Text>
-//                   :
-//                   null}
-//             </View>
-//             {rightIcon ?
-//                <View style={[styles.lastView]}>
-//                   <TouchableOpacity activeOpacity={0.8} onPress={onPressRightIcon}>
-//                      {rightImage ?
-//                         <Image source={rightImage} style={rightImageStyle} />
-//                         : null
-//                      }
-//                   </TouchableOpacity>
-//                </View>
-//                :
-//                <View style={[styles.lastView]} />
-//             }
-//          </>
-//       </View>
-//    )
-// }
-
 class HeaderComponent extends Component {
    constructor(props) {
       super(props);
@@ -101,60 +27,58 @@ class HeaderComponent extends Component {
 
       return (
          <View style={[styles.container, mainStyle,]} >
-            <>
-               <View style={styles.firstView}>
-                  {
-                     backButton ?
+            <View style={styles.firstView}>
+               {
+                  backButton ?
+                     <View
+                        style={[styles.backButton]}
+                     >
+                        <TouchableOpacity
+                           onPress={() => {
+                              if (onBackButtonPress) onBackButtonPress();
+                              else NavigationService.goBack();
+                           }}
+                           delayPressIn={0}
+                        >
+                           <Text>{"Back"}</Text>
+                        </TouchableOpacity>
+                     </View>
+                     :
+                     leftIcon ?
                         <View
                            style={[styles.backButton]}
                         >
                            <TouchableOpacity
-                              onPress={() => {
-                                 if (onBackButtonPress) onBackButtonPress();
-                                 else NavigationService.goBack();
-                              }}
+                              onPress={() => leftIconPress && leftIconPress()}
                               delayPressIn={0}
+                              hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
                            >
-                              <Text>{"Back"}</Text>
+                              <Image source={leftIcon} />
                            </TouchableOpacity>
                         </View>
                         :
-                        leftIcon ?
-                           <View
-                              style={[styles.backButton]}
-                           >
-                              <TouchableOpacity
-                                 onPress={() => leftIconPress && leftIconPress()}
-                                 delayPressIn={0}
-                                 hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
-                              >
-                                 <Image source={leftIcon} />
-                              </TouchableOpacity>
-                           </View>
-                           :
-                           null
-                  }
-               </View>
-               <View
-                  style={[styles.middleView]}>
-                  {middleText ?
-                     <Text numberOfLines={1} style={[styles.middleTextStyle, middleTextStyle, {}]}> {middleText}</Text>
-                     :
-                     null}
-               </View>
-               {rightIcon ?
-                  <View style={[styles.lastView]}>
-                     <TouchableOpacity activeOpacity={0.8} onPress={onPressRightIcon}>
-                        {rightImage ?
-                           <Image source={rightImage} style={rightImageStyle} />
-                           : null
-                        }
-                     </TouchableOpacity>
-                  </View>
-                  :
-                  <View style={[styles.lastView]} />
+                        null
                }
-            </>
+            </View>
+            <View
+               style={[styles.middleView]}>
+               {middleText ?
+                  <Text numberOfLines={1} style={[styles.middleTextStyle, middleTextStyle, {}]}> {middleText}</Text>
+                  :
+                  null}
+            </View>
+            {rightIcon ?
+               <View style={[styles.lastView]}>
+                  <TouchableOpacity activeOpacity={0.8} onPress={onPressRightIcon}>
+                     {rightImage ?
+                        <Image source={rightImage} style={rightImageStyle} />
+                        : null
+                     }
+                  </TouchableOpacity>
+               </View>
+               :
+               <View style={[styles.lastView]} />
+            }
          </View>
       );
    }
