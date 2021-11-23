@@ -62,3 +62,6 @@ buck-out/
 *.apk
 *.ipa
 *.aab
+
+ios/
+android/
